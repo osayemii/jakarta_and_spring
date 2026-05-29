@@ -1,0 +1,100 @@
+@charset "ISO-8859-1";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    background: url('https://cdn.pixabay.com/photo/2017/08/07/03/07/interior2599130_1280.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    backdrop-filter: blur(7px);
+    /* Blur effect */
+    -webkit-backdrop-filter: blur(4px);
+    color: #6f2a3b;
+}
+
+.container {
+    width: 70%;
+    height: 410px;
+    /* Increased height for better
+visibility */
+    display: flex;
+    justify-content: space-between;
+    /* Adjusted to
+space-between for better layout */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    /* Add vertical scroll if
+content overflows */
+}
+
+.left,
+.right {
+    width: 48%;
+}
+
+.right {
+    margin-left: 2%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+th,
+td,
+input {
+    padding: 10px;
+    text-align: left;
+    border-radius: 40px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.button-style,
+.buttonstyle {
+    background-color: #6f2a3b;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    /* Ensures text is visible on dark
+background */
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+}
+
+.button-style:disabled,
+.buttonstyle:disabled {
+    background-color: #ccc;
+    border: 3px solid #999;
+    cursor: not-allowed;
+    color: #333;
+}
+
+select {
+    width: 50%;
+    margin-left: 20px;
+    /*Space between label and
+dropdown*/
+    padding: 10px;
+    /*This is used for the height of
+the dropdown*/
+    font-size: 12px;
+    border: solid #6f2a3b;
+    border-radius: 40px;
+    background-color: #f0f0f0;
+    color: #6f2a3b;
+    cursor: pointer;
+}

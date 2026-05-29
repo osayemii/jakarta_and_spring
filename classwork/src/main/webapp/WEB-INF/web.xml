@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
+ <display-name>Archetype Created Web Application</display-name>
+ <servlet>
+ <description></description>
+ <display-name>ControllerServlet</display-name>
+ <servlet-name>ControllerServlet</servlet-name>
+ <servlet-class>com.classwork.controller.ControllerServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>ControllerServlet</servlet-name>
+ <url-pattern>/ControllerServlet</url-pattern>
+ </servlet-mapping>
+</web-app>

@@ -1,0 +1,2 @@
+# Copied by maven-dependency-plugin; regenerate with: mvn process-resources
+src/main/webapp/WEB-INF/lib/*.jar

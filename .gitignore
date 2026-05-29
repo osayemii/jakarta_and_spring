@@ -1,0 +1,14 @@
+*.zip
+*.metadata
+*.log
+target/
+*.iml
+.idea/
+*.class
+*.jar
+*.war
+*.ear
+.DS_Store
+# Spring Boot specific
+logs/
+spring.log
