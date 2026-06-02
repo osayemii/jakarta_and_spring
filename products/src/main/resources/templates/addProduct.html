@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 150px; }
+        input[type="text"], input[type="number"] { width: 300px; padding: 5px; }
+        .error { color: red; font-size: 0.9em; margin-left: 10px; }
+        .success { color: green; font-weight: bold; }
+        .btn { padding: 8px 15px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Add Product Details</h2>
+    <p th:if="${successMessage}" th:text="${successMessage}" class="success"></p>
+    
+    <form th:action="@{/saveProduct}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label>Product ID:</label>
+            <input type="text" th:field="*{productId}" placeholder="e.g., P00000" />
+            <span th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label>Product Name:</label>
+            <input type="text" th:field="*{productName}" />
+            <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label>Product Description:</label>
+            <input type="text" th:field="*{productDescription}" />
+            <span th:if="${#fields.hasErrors('productDescription')}" th:errors="*{productDescription}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label>Unit Price:</label>
+            <input type="number" step="0.01" th:field="*{unitPrice}" />
+            <span th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}" class="error"></span>
+        </div>
+        
+        <input type="submit" class="btn" value="Submit" />
+    </form>
+    <br/>
+    <a href="/">Back to Home</a>
+</body>
+</html>

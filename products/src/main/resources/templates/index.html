@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products Home</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .btn { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Products Management</h1>
+    <div>
+        <form action="/addProduct" method="get" style="display:inline;">
+            <button class="btn" type="submit">Add Product Details</button>
+        </form>
+        <form action="/viewProduct" method="get" style="display:inline;">
+            <button class="btn" type="submit">View Product Details</button>
+        </form>
+    </div>
+</body>
+</html>

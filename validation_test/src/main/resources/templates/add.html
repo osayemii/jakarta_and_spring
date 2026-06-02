@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<title>Index Page</title>
+	</head>
+
+	<body>
+		<h1>Home Page</h1>
+		<form th:action="@{/welcomePage}" method="get">
+			<button type="submit">Go</button>
+		</form>
+	</body>
+</html>
