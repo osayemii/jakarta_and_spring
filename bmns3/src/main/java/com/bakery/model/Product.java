@@ -26,6 +26,10 @@ public class Product {
 		this.productionDate = productionDate;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getProductName() {
 		return productName;
 	}
@@ -40,5 +44,21 @@ public class Product {
 
 	public LocalDate getProductionDate() {
 		return productionDate;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public void setProductionDate(LocalDate productionDate) {
+		this.productionDate = productionDate;
 	}
 }

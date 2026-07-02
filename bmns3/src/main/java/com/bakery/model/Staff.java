@@ -26,6 +26,10 @@ public class Staff {
 		this.staffAddress = staffAddress;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getName() {
 		return staffName;
 	}
@@ -44,5 +48,25 @@ public class Staff {
 
 	public String getAddress() {
 		return staffAddress;
+	}
+
+	public void setName(String staffName) {
+		this.staffName = staffName;
+	}
+
+	public void setEmail(String staffEmail) {
+		this.staffEmail = staffEmail;
+	}
+
+	public void setAge(int staffAge) {
+		this.staffAge = staffAge;
+	}
+
+	public void setPhone(String staffPhone) {
+		this.staffPhone = staffPhone;
+	}
+
+	public void setAddress(String staffAddress) {
+		this.staffAddress = staffAddress;
 	}
 }

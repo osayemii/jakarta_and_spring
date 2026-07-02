@@ -28,6 +28,19 @@ public class StaffServlet extends HttpServlet {
 			req.setAttribute("staffList", Collections.emptyList());
 			req.setAttribute("listError", "Could not load staff. Check DB connection and schema. (" + e.getMessage() + ")");
 		}
+		String editId = req.getParameter("edit");
+		if (editId != null && !editId.isBlank()) {
+			try {
+				Staff editStaff = new StaffJPADAO().findById(Integer.parseInt(editId));
+				if (editStaff == null) {
+					session.setAttribute("flashError_staff", "Staff member not found.");
+				} else {
+					req.setAttribute("editStaff", editStaff);
+				}
+			} catch (Exception e) {
+				getServletContext().log("Bakery staff edit lookup failed", e);
+			}
+		}
 		req.getRequestDispatcher("/staff.jsp").forward(req, resp);
 	}
 
@@ -40,18 +53,38 @@ public class StaffServlet extends HttpServlet {
 		}
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
+		String actionParam = req.getParameter("_action");
+		String idParam = req.getParameter("id");
+
+		if ("delete".equals(actionParam)) {
+			try {
+				new StaffJPADAO().delete(Integer.parseInt(idParam));
+				session.setAttribute("flashOk_staff", "Staff member deleted.");
+			} catch (Exception e) {
+				getServletContext().log("Bakery staff delete failed", e);
+				session.setAttribute("flashError_staff", "Could not delete staff: " + e.getMessage());
+			}
+			resp.sendRedirect(req.getContextPath() + "/staff");
+			return;
+		}
+
 		try {
 			int age = Integer.parseInt(req.getParameter("age"));
-			Staff staff = new Staff(
-					req.getParameter("name"),
-					req.getParameter("email"),
-					age,
-					req.getParameter("phone"),
-					req.getParameter("address"));
-			new StaffJPADAO().save(staff);
-			session.setAttribute("flashOk_staff", "Staff member saved.");
+			String name = req.getParameter("name");
+			String email = req.getParameter("email");
+			String phone = req.getParameter("phone");
+			String address = req.getParameter("address");
+
+			if (idParam != null && !idParam.isBlank()) {
+				new StaffJPADAO().update(Integer.parseInt(idParam), name, email, age, phone, address);
+				session.setAttribute("flashOk_staff", "Staff member updated.");
+			} else {
+				Staff staff = new Staff(name, email, age, phone, address);
+				new StaffJPADAO().save(staff);
+				session.setAttribute("flashOk_staff", "Staff member saved.");
+			}
 		} catch (Exception e) {
-			getServletContext().log("Bakery staff insert failed", e);
+			getServletContext().log("Bakery staff save failed", e);
 			session.setAttribute("flashError_staff", "Could not save staff: " + e.getMessage());
 			resp.sendRedirect(req.getContextPath() + "/staff");
 			return;

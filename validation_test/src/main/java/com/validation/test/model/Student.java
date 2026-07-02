@@ -8,6 +8,9 @@ public class Student {
      @Students
      private String email;
      
+     public Student() {
+     }
+     
      Student(String name, int age, String email) {
     	 this.name = name;
     	 this.age = age;

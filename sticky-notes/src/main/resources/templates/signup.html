@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-lineicons/2.4.1/css/simple-line-icons.min.css"
+        rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+
+<body>
+    <div class="blur-background"></div>
+    <div class="registration-form">
+        <form th:action="@{/saveUser}" method="post">
+
+            <div class="form-icon">
+                <h4 class="form-signin-heading textcenter"><span style="color: rgb(139, 40, 135);">Signup</span></h4>
+                <!-- URL of the image -->
+                <img src="https://cdn-iconspng.flaticon.com/128/9684/9684447.png" alt="Your Image" width="120"
+                    height="120">
+            </div>
+
+            <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                <strong th:text="${successMessage}"></strong>
+            </div>
+
+            <div th:if="${errorMessage}" class="alert alertdanger" role="alert">
+                <strong th:text="${errorMessage}"></strong>
+            </div>
+            <div class="form-group mt-2">
+                <input type="text" id="name" name="name" class="form-control" required="required"
+                    placeholder="Enter Name">
+            </div>
+            <div class="form-group mt-2">
+                <input type="email" id="email" name="email" lass="form-control" required="required"
+                    placeholder="Enter Email">
+            </div>
+            <div class="form-group mt-2">
+                <input type="password" id="password" name="password" class="form-control" required="required"
+                    placeholder="Enter Password">
+            </div>
+            <div class="form-group mt-2">
+                <textarea rows="3" cols="" id="about" name="about" class="form-control"
+                    placeholder="Enter About"></textarea>
+            </div>
+            <div class="text-center mt-3">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btnprimary">Submit</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" onclick="goToHomePage()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8.646.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1
+                                    .146.354v8a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V9H6v5.5a.5.5 0
+                                    0 1-.5.5H2a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .146-.354l6-6zM7
+                                    9V3.707L2.354 8.354a.5.5 0 0 0-.104.146l-.057.088a1.5 1.5 0 0
+                                    0-.063.154l-.019.079-.012.089-.007.095V15.5A1.5 1.5 0 0 0 2.5
+                                    17h3a.5.5 0 0 0 .5-.5V12h3v5.5a.5.5 0 0 0 .5.5h3a1.5 1.5 0 0
+                                    0 1.5-1.5V8.354l-4.646-4.647a1.5 1.5 0 0 0-2.122 0L7 9z" />
+                            </svg> Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // Remove the success message after 10 seconds
+        setTimeout(function () {
+            var successMessage = document.getElementById("successMessage");
+            if (successMessage) {
+                successMessage.style.display = "none";
+            }
+        }, 10000);
+    </script>
+
+</body>
+
+</html>

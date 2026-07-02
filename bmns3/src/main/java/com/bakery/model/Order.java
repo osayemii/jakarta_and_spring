@@ -28,6 +28,10 @@ public class Order {
 		this.orderedDate = orderedDate;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -46,5 +50,25 @@ public class Order {
 
 	public LocalDate getOrderedDate() {
 		return orderedDate;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public void setOrderedGoods(String orderedGoods) {
+		this.orderedGoods = orderedGoods;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public void setOrderedDate(LocalDate orderedDate) {
+		this.orderedDate = orderedDate;
 	}
 }

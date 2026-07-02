@@ -1,11 +1,40 @@
 package com.sticky.notes.model;
 
+import jakarta.persistence.*;
+
 import com.sticky.notes.validation.NoteTitle;
 
+@Entity
+@Table(name = "notes")
 public class StickyNotes {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @NoteTitle
+    @Column
     private String title;
+
+    @Column
     private String content;
+
+    public StickyNotes() {
+        super();
+    }
+
+    public StickyNotes(String title, String content) {
+        super();
+        this.title = title;
+        this.content = content;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

@@ -10,8 +10,10 @@ public class ValidateNoteTitle implements ConstraintValidator<NoteTitle, String>
 
     @Override
     public boolean isValid(String title, ConstraintValidatorContext context) {
+        if (title == null || title.isEmpty()) {
+            return false;
+        }
         String pattern = "^\\d{3}_[\\w]{0,10}$";
-        boolean result = title.matches(pattern);
-        return result;
+        return title.matches(pattern);
     }
 }

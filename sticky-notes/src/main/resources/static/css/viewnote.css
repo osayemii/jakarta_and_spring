@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://cdn.pixabay.com/photo/2018/11/17/07/10/notebook3820634_1280.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.blur-background {
+    background-image: url("https://cdn.pixabay.com/photo/2018/11/17/07/10/notebook3820634_1280.jpg");
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.view-note-form {
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1450px;
+    /* Adjust max-width as needed */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 5px;
+    /* Reduced margin */
+    width: 100%;
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: 3px solid rgb(218, 112, 214);
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 6px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(218, 112, 214);
+    border: none;
+    color: white;
+    margin: 10px 5px;
+    box-shadow: 0 0 0 3px rgb(218, 112, 214);
+    width: 200px;
+    height: 40px;
+    z-index: 1;
+    outline: none;
+    margin-right: 3px;
+    white-space: nowrap;
+    padding-left: -180px;
+}
+
+.dashboard-button {
+    position: fixed;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    margin-top: 9px;
+    padding: 5px 2px;
+    width: 125px !important;
+    height: 40px !important;
+    background-color: rgb(216, 172, 38) !important;
+    /* button color*/
+    text-align: left;
+    vertical-align: left;
+    margin-left: -680px;
+    /* Adjust margin-left to shift the button to the right */
+    margin-right: 4px;
+    /* Adjust margin-right for spacing */
+    padding-left: -180px;
+    /* Adjust padding-left to shift the text to the left */
+    z-index: 1;
+}
+
+.dashboard-button:hover {
+    background-color: rgb(216, 172, 38) !important;
+    color: white !important;
+}
+
+.icon {
+    width: 30px;
+    /* Adjust size as needed */
+    height: 30px;
+    /* Adjust size as needed */
+    margin-right: 1px;
+    /* Add some space between icon and text */
+    vertical-align: middle;
+    /* Align vertically */
+}
+
+.card {
+    margin: auto;
+    padding: 20px;
+    width: 40%;
+    min-height: 160px !important;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    text-align: left;
+    margin-top: 40px;
+    position: fixed;
+    /* Set the position to fixed */
+    right: 150px;
+    bottom: 290px;
+}
+
+@media (max-width: 768px) {
+    .view-note-form {
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .card {
+        width: calc(100% - 40px);
+    }
+}
+
+.view-note-form .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    margin-right: -390px;
+}
+
+.form-icon,
+.form-signin-heading {
+    display: inline-block;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.custom-dropdown select {
+    width: 100%;
+    padding-right: 30px;
+    /* Add space for the arrow icon */
+}
+
+.custom-dropdown .arrow-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Ensure the arrow icon doesn't interfere with the select box */
+}

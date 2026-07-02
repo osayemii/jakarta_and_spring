@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.sticky.notes.controller, com.sticky.notes.model")
+@ComponentScan(basePackages = "com.sticky.notes.controller, com.sticky.notes.model, com.sticky.notes.repository, com.sticky.notes.service")
 public class StickyNotesApplication {
     public static void main(String[] args) {
         SpringApplication.run(StickyNotesApplication.class, args);

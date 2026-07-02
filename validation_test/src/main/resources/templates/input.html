@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	
+<html xmlns:th="https://www.thymeleaf.org">
+	<head><title>Input Page</title></head>
+
+	<body>
+		<form th:action="@{/save}" method="post" th:object="${student}">
+			<div>
+				<label>Name:</label>
+				<input type="text" th:field="*{name}" />
+			</div>
+			<div>
+				<label>Age:</label>
+				<input type="number" th:field="*{age}" />
+			</div>
+			<div>
+				<label>Email:</label>
+				<input type="text" th:field="*{email}" />
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></span>
+			</div>
+			
+			<input type="submit" value="Submit" />
+		</form>
+	</body>
+</html>

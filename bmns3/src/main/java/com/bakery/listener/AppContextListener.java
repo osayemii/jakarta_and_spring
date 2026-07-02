@@ -8,7 +8,7 @@ public class AppContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext ctx = sce.getServletContext();
 		ctx.setAttribute("bakeryTagline", "Fresh breads, pastries and orders");
-		ctx.setAttribute("bakeryName", "Artisan Bakery");
+		ctx.setAttribute("bakeryName", "Osayemi's Bakery");
 	}
 
 	@Override

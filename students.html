@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student API Client</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Student REST Client</h1>
+
+<button onclick="getStudents()">GET Students</button>
+
+<hr>
+
+<h2>Add Student</h2>
+
+<input id="id" type="number" placeholder="ID">
+
+<input id="name" placeholder="Name">
+
+<input id="programme" placeholder="Programme">
+
+<button onclick="addStudent()">POST Student</button>
+
+<hr>
+
+<h2>Response</h2>
+
+<pre id="output"></pre>
+
+<script>
+
+const api = "http://localhost:8080/students";
+
+async function getStudents() {
+
+    try {
+
+        const response = await fetch(api);
+
+        const data = await response.json();
+
+        document.getElementById("output").textContent =
+            JSON.stringify(data, null, 4);
+
+    } catch(err) {
+
+        document.getElementById("output").textContent =
+            err;
+
+    }
+
+}
+
+async function addStudent() {
+
+    const student = {
+
+        id: Number(document.getElementById("id").value),
+
+        name: document.getElementById("name").value,
+
+        programme: document.getElementById("programme").value
+
+    };
+
+    try {
+
+        const response = await fetch(api, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(student)
+
+        });
+
+        const data = await response.json();
+
+        document.getElementById("output").textContent =
+            JSON.stringify(data, null, 4);
+
+    } catch(err) {
+
+        document.getElementById("output").textContent =
+            err;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+

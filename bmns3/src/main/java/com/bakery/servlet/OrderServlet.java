@@ -29,6 +29,19 @@ public class OrderServlet extends HttpServlet {
 			req.setAttribute("orderList", Collections.emptyList());
 			req.setAttribute("listError", "Could not load orders. Check DB connection and schema. (" + e.getMessage() + ")");
 		}
+		String editId = req.getParameter("edit");
+		if (editId != null && !editId.isBlank()) {
+			try {
+				Order editOrder = new OrderJPADAO().findById(Integer.parseInt(editId));
+				if (editOrder == null) {
+					session.setAttribute("flashError_order", "Order not found.");
+				} else {
+					req.setAttribute("editOrder", editOrder);
+				}
+			} catch (Exception e) {
+				getServletContext().log("Bakery order edit lookup failed", e);
+			}
+		}
 		req.getRequestDispatcher("/order.jsp").forward(req, resp);
 	}
 
@@ -41,20 +54,38 @@ public class OrderServlet extends HttpServlet {
 		}
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
+		String actionParam = req.getParameter("_action");
+		String idParam = req.getParameter("id");
+
+		if ("delete".equals(actionParam)) {
+			try {
+				new OrderJPADAO().delete(Integer.parseInt(idParam));
+				session.setAttribute("flashOk_order", "Order deleted.");
+			} catch (Exception e) {
+				getServletContext().log("Bakery order delete failed", e);
+				session.setAttribute("flashError_order", "Could not delete order: " + e.getMessage());
+			}
+			resp.sendRedirect(req.getContextPath() + "/order");
+			return;
+		}
+
 		try {
 			double totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
 			LocalDate orderedDate = LocalDate.parse(req.getParameter("orderedDate"));
-			Order order = new Order(
-					req.getParameter("customerName"),
-					req.getParameter("productName"),
-					req.getParameter("orderedGoods"),
-					totalPrice,
-					orderedDate);
-			
-			new OrderJPADAO().save(order);
-			session.setAttribute("flashOk_order", "Order saved.");
+			String customerName = req.getParameter("customerName");
+			String productName = req.getParameter("productName");
+			String orderedGoods = req.getParameter("orderedGoods");
+
+			if (idParam != null && !idParam.isBlank()) {
+				new OrderJPADAO().update(Integer.parseInt(idParam), customerName, productName, orderedGoods, totalPrice, orderedDate);
+				session.setAttribute("flashOk_order", "Order updated.");
+			} else {
+				Order order = new Order(customerName, productName, orderedGoods, totalPrice, orderedDate);
+				new OrderJPADAO().save(order);
+				session.setAttribute("flashOk_order", "Order saved.");
+			}
 		} catch (Exception e) {
-			getServletContext().log("Bakery order insert failed", e);
+			getServletContext().log("Bakery order save failed", e);
 			session.setAttribute("flashError_order", "Could not save order: " + e.getMessage());
 			resp.sendRedirect(req.getContextPath() + "/order");
 			return;
