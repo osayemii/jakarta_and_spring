@@ -41,8 +41,7 @@ public class UserService {
 
     public LoginResponse login(LoginRequest request) {
 
-        User user = userRepository.findByEmail(
-                    request.getEmail())
+        User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> 
                     new RuntimeException("Invalid email or password"));
 
@@ -53,7 +52,5 @@ public class UserService {
         String token = jwtService.generateToken(user.getEmail());
 
         return new LoginResponse(token);
-
     }
-
 }

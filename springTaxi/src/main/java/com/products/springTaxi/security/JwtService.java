@@ -33,7 +33,7 @@ public class JwtService {
                 .compact();
     }
 
-    public String extractUsername(String token) {
+    public String extractEmail(String token) {
 
         return Jwts.parser()
                 .verifyWith((javax.crypto.SecretKey) getSigningKey())
@@ -44,8 +44,6 @@ public class JwtService {
     }
 
     public boolean isTokenValid(String token, String email) {
-
-        return extractUsername(token).equals(email);
-
+        return extractEmail(token).equals(email);
     }
 }

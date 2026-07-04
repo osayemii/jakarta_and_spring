@@ -14,7 +14,7 @@ public class AuthController {
 
     private final UserService userService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService) { // Constructor Injection
         this.userService = userService;
     }
 
