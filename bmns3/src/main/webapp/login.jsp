@@ -23,7 +23,6 @@
 					<button type="submit" class="btn btn-primary">Sign in</button>
 				</div>
 			</form>
-			<p class="hint">Demo: admin / admin</p>
 		</div>
 	</div>
 </body>

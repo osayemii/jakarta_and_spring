@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; margin-top: 80px; }
+        .login-box { background-color: white; padding: 30px; width: 360px; border: 1px solid #ccc; border-radius: 5px; }
+        h4 { text-align: center; color: #333; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #337ab7; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 15px; }
+        button:hover { background-color: #286090; }
+        .error { background-color: #f2dede; color: #a94442; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+        .success { background-color: #dff0d8; color: #3c763d; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+        p { text-align: center; color: #999; font-size: 13px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h4>Student Manager</h4>
+
+    <div th:if="${param.error}" class="error">Invalid username or password.</div>
+    <div th:if="${param.logout}" class="success">You have been logged out.</div>
+
+    <form th:action="@{/login}" method="post">
+        <label>Username</label>
+        <input type="text" name="username" required autofocus>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Default: admin / admin123</p>
+</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var alerts = document.querySelectorAll(".alert");
+            alerts.forEach(function (el) {
+                setTimeout(function () {
+                    el.style.transition = "opacity 0.4s ease";
+                    el.style.opacity = "0";
+                    setTimeout(function () {
+                        el.style.display = "none";
+                    }, 400);
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

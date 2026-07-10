@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f0f0f0; }
+        h3 { color: #333; }
+        form { background-color: white; padding: 25px; width: 420px; border: 1px solid #ccc; border-radius: 5px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 8px; margin-bottom: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        input[readonly] { background-color: #eeeeee; color: #777; }
+        .error { color: red; font-size: 13px; margin-bottom: 10px; display: block; }
+        .group { margin-bottom: 15px; }
+        button { background-color: #f0ad4e; color: white; padding: 9px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #ec971f; }
+        a { color: white; background-color: #999; padding: 9px 16px; text-decoration: none; border-radius: 4px; margin-left: 8px; }
+    </style>
+</head>
+<body>
+
+<h3>Edit Student</h3>
+
+<form th:action="@{/students/edit/{id}(id=${student.studentId})}" th:object="${student}" method="post">
+
+    <div class="group">
+        <label>Student ID</label>
+        <input type="text" th:field="*{studentId}" readonly>
+    </div>
+
+    <div class="group">
+        <label>Full Name</label>
+        <input type="text" th:field="*{studentName}">
+        <span class="error" th:if="${#fields.hasErrors('studentName')}" th:errors="*{studentName}"></span>
+    </div>
+
+    <div class="group">
+        <label>Email</label>
+        <input type="email" th:field="*{email}">
+        <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    </div>
+
+    <div class="group">
+        <label>Course</label>
+        <input type="text" th:field="*{course}">
+        <span class="error" th:if="${#fields.hasErrors('course')}" th:errors="*{course}"></span>
+    </div>
+
+    <div class="group">
+        <label>Duration</label>
+        <input type="text" th:field="*{duration}">
+        <span class="error" th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+    </div>
+
+    <button type="submit">Update</button>
+    <a href="/students">Cancel</a>
+</form>
+
+</body>
+</html>

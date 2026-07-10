@@ -5,7 +5,7 @@
 	Object productCount = request.getAttribute("productCount");
 	Object orderCount = request.getAttribute("orderCount");
 	Object revenue = request.getAttribute("revenue");
-	String revenueText = revenue != null ? String.format("$%.2f", (Double) revenue) : "$0.00";
+	String revenueText = revenue != null ? String.format("$%.2f", Double (revenue)) : "$0.00";
 %>
 <!DOCTYPE html>
 <html lang="en">

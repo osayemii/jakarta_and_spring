@@ -14,8 +14,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("user") != null) {
-			resp.sendRedirect(req.getContextPath() + "/dashboard");
-			return;
+			// Navigating (or back-navigating) to /login while already signed in
+			// ends the session, so landing on the login page always means a
+			// fresh login rather than bouncing back to the dashboard.
+			session.invalidate();
 		}
 		req.getRequestDispatcher("/login.jsp").forward(req, resp);
 	}
@@ -26,12 +28,10 @@ public class LoginServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 
-		if ("admin".equals(username) && "admin".equals(password)) {
+		if ("osayemi".equals(username) && "daniel".equals(password)) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("user", username);
 			resp.sendRedirect(req.getContextPath() + "/dashboard");
-
-			req.getParameter("username");
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/error.jsp");
 		}

@@ -85,9 +85,9 @@ public class OrderJPADAO {
 	public double totalRevenue() {
 		EntityManager em = emf.createEntityManager();
 		try {
-			Double sum = em.createQuery("SELECT COALESCE(SUM(o.totalPrice), 0.0) FROM Order o", Double.class)
+			Double sum = em.createQuery("SELECT COALESCE(SUM(o.totalPrice), 0.00) FROM Order o", Double.class)
 					.getSingleResult();
-			return sum == null ? 0.0 : sum;
+			return sum == null ? 0.00 : sum;
 		} finally {
 			em.close();
 		}

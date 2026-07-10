@@ -1,3 +1,5 @@
+// Generates token, extract userEmail, validate token
+
 package com.products.springTaxi.security;
 
 import java.nio.charset.StandardCharsets;

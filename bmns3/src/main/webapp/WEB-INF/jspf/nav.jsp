@@ -1,5 +1,6 @@
 <%-- Shared header/nav include. Expects request/session/application scope to be available. --%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/style.css">
+<script src="<%= request.getContextPath() %>/assets/app.js"></script>
 <header class="site-header">
 	<a class="brand" href="<%= request.getContextPath() %>/dashboard"><%= application.getAttribute("bakeryName") %></a>
 	<nav class="site-nav">

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f0f0f0; }
+        h3 { color: #333; }
+        .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .top div { display: flex; gap: 10px; align-items: center; }
+        a.add-btn { background-color: #337ab7; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; }
+        a.add-btn:hover { background-color: #286090; }
+        button.logout { background-color: #999; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+        button.logout:hover { background-color: #777; }
+        .success { background-color: #dff0d8; color: #3c763d; padding: 10px; margin-bottom: 15px; border: 1px solid #d6e9c6; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #333; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        a.view   { background-color: #5bc0de; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+        a.edit   { background-color: #f0ad4e; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; margin-left: 4px; }
+        a.delete { background-color: #d9534f; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; margin-left: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <h3>Student Records</h3>
+    <div>
+        <a href="/students/add" class="add-btn">Add Student</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout">Logout</button>
+        </form>
+    </div>
+</div>
+
+<div th:if="${successMessage}" class="success" th:text="${successMessage}"></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Duration</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${#lists.isEmpty(students)}">
+            <td colspan="6" style="text-align:center;">No students found.</td>
+        </tr>
+        <tr th:each="s : ${students}">
+            <td th:text="${s.studentId}"></td>
+            <td th:text="${s.studentName}"></td>
+            <td th:text="${s.email}"></td>
+            <td th:text="${s.course}"></td>
+            <td th:text="${s.duration}"></td>
+            <td>
+                <a th:href="@{/students/view/{id}(id=${s.studentId})}" class="view">View</a>
+                <a th:href="@{/students/edit/{id}(id=${s.studentId})}" class="edit">Edit</a>
+                <a th:href="@{/students/delete/{id}(id=${s.studentId})}" class="delete"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var alerts = document.querySelectorAll(".alert");
+            alerts.forEach(function (el) {
+                setTimeout(function () {
+                    el.style.transition = "opacity 0.4s ease";
+                    el.style.opacity = "0";
+                    setTimeout(function () {
+                        el.style.display = "none";
+                    }, 400);
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

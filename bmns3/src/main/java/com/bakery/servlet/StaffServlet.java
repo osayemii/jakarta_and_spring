@@ -28,6 +28,7 @@ public class StaffServlet extends HttpServlet {
 			req.setAttribute("staffList", Collections.emptyList());
 			req.setAttribute("listError", "Could not load staff. Check DB connection and schema. (" + e.getMessage() + ")");
 		}
+		
 		String editId = req.getParameter("edit");
 		if (editId != null && !editId.isBlank()) {
 			try {

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f0f0f0; }
+        h3 { color: #333; }
+        .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        a.add-btn { background-color: #4CAF50; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; }
+        a.add-btn:hover { background-color: #45a049; }
+        .success { background-color: #dff0d8; color: #3c763d; padding: 10px; margin-bottom: 15px; border: 1px solid #d6e9c6; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #333; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        a.edit { color: white; background-color: #f0ad4e; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+        a.delete { color: white; background-color: #d9534f; padding: 5px 10px; text-decoration: none; border-radius: 3px; margin-left: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <h3>Employee Records</h3>
+    <a href="/add" class="add-btn">Add Employee</a>
+</div>
+
+<div th:if="${successMessage}" class="success" th:text="${successMessage}"></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Joining Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${#lists.isEmpty(employees)}">
+            <td colspan="6" style="text-align:center;">No records found.</td>
+        </tr>
+        <tr th:each="emp : ${employees}">
+            <td th:text="${emp.employeeId}"></td>
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.department}"></td>
+            <td th:text="${emp.salary}"></td>
+            <td th:text="${emp.joiningDate}"></td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${emp.id})}" class="edit">Edit</a>
+                <a th:href="@{/delete/{id}(id=${emp.id})}" class="delete"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var alerts = document.querySelectorAll(".alert");
+            alerts.forEach(function (el) {
+                setTimeout(function () {
+                    el.style.transition = "opacity 0.4s ease";
+                    el.style.opacity = "0";
+                    setTimeout(function () {
+                        el.style.display = "none";
+                    }, 400);
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

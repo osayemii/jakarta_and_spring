@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Bakery — Login failed</title>
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/style.css">
+	<script src="<%= request.getContextPath() %>/assets/app.js"></script>
 </head>
 <body>
 	<div class="center-page">
