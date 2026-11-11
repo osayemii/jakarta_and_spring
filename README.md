@@ -8,31 +8,31 @@
 
 ## Root folders
 
-| Folder | What it contains |
-| --- | --- |
-| `bank_management/` | Bank management Spring project. |
-| `bmns3/` | BMNS project folder. |
-| `classwork/` | Jakarta EE/Spring classwork. |
-| `classwork2/` | Jakarta EE/Spring classwork. |
-| `departure/` | Departure board/project folder. |
-| `employee-information/` | Employee information Spring project. |
-| `employee-manager/` | Employee management Spring project. |
-| `jemimaRecipe/` | Recipe app project. |
-| `lesson/` | Lesson/example Spring project. |
-| `product-webflux/` | Product/catalog Spring WebFlux project. |
-| `products/` | Product/catalog Spring project. |
-| `rms/` | RMS project folder. |
-| `social-media/` | Social media Spring project. |
-| `springTaxi/` | Taxi booking Spring project. |
-| `sticky-notes/` | Sticky notes Spring project. |
-| `student-manager/` | Student management Spring project. |
-| `studentApi/` | Student API Spring project. |
-| `students_center/` | Students center Spring project. |
-| `tcms2/` | Course/student management system iteration. |
-| `tcms3/` | Course/student management system iteration. |
-| `tcms4/` | Course/student management system iteration. |
-| `validatingFormInput/` | Form validation examples. |
-| `validation_test/` | Validation test examples. |
+| Folder | Stack | What it contains |
+| --- | --- | --- |
+| `bank_management/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Bank management Spring project. |
+| `bmns3/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | BMNS project folder. |
+| `classwork/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Jakarta EE/Spring classwork. |
+| `classwork2/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Jakarta EE/Spring classwork. |
+| `departure/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Departure board/project folder. |
+| `employee-information/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Employee information Spring project. |
+| `employee-manager/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Employee management Spring project. |
+| `jemimaRecipe/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Recipe app project. |
+| `lesson/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Lesson/example Spring project. |
+| `product-webflux/` | Java, Spring WebFlux, Maven/Gradle | Product/catalog Spring WebFlux project. |
+| `products/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Product/catalog Spring project. |
+| `rms/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | RMS project folder. |
+| `social-media/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Social media Spring project. |
+| `springTaxi/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Taxi booking Spring project. |
+| `sticky-notes/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Sticky notes Spring project. |
+| `student-manager/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Student management Spring project. |
+| `studentApi/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Student API Spring project. |
+| `students_center/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Students center Spring project. |
+| `tcms2/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Course/student management system iteration. |
+| `tcms3/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Course/student management system iteration. |
+| `tcms4/` | Java, Spring Boot, Jakarta EE, Maven/Gradle | Course/student management system iteration. |
+| `validatingFormInput/` | Java, Spring Validation, Jakarta Bean Validation | Form validation examples. |
+| `validation_test/` | Java, Spring Validation, Jakarta Bean Validation | Validation test examples. |
 
 Only root folders are listed. Generated caches, package folders, editor settings, and other non-personal folders are omitted.
 
